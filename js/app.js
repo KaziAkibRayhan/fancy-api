@@ -44,7 +44,7 @@ searchField.addEventListener('keypress', async (event) => {
                 <figure><img src="${image}" alt="Shoes" class="h-52 w-full" /></figure>
                 <div class="card-body">
                 <h2 class="card-title">${category}</h2>
-                <p>${title}</p>
+                <p>${title.length > 20 ? title.slice(0, 20) + '...' : title}</p>
                 <div class="card-actions justify-end">
                     <button class="btn btn-primary">Show Details</button>
                 </div>
