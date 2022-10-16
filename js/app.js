@@ -34,8 +34,24 @@ searchField.addEventListener('keypress', async (event) => {
         const value = searchField.value;
         const allProducts = await loadAllProducts();
         const foundProducts = allProducts.filter(product => product.category.includes(value));
+        const productsContainer = document.getElementById('products-container');
+        productsContainer.innerHTML = '';
         foundProducts.forEach(product => {
-            console.log(product);
+            const { category, image, title } = product;
+            const div = document.createElement('div');
+            div.innerHTML = `
+            <div class="card card-compact w-full bg-base-100 shadow-xl">
+                <figure><img src="${image}" alt="Shoes" class="h-52 w-full" /></figure>
+                <div class="card-body">
+                <h2 class="card-title">${category}</h2>
+                <p>${title}</p>
+                <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Show Details</button>
+                </div>
+                </div>
+            </div>
+            `;
+            productsContainer.appendChild(div);
         });
     }
 })
